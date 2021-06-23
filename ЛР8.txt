@@ -1,0 +1,100 @@
+/* Задача №1: Составить программу, которая будет считывать введённое пятизначное число. После чего, каждую цифру этого числа необходимо вывести в новой строке.
+Код программы: */
+
+#include <iostream>
+
+using namespace std;
+
+void division(int a)
+{
+	int div = 10000, t;
+	for (int i = 0; i < 5; i++)
+	{
+		t = a / div;
+		cout << t << endl;
+		a = a % div;
+		div = div / 10;
+	}
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a = 0;
+	while (a < 10000 || a > 99999)
+	{
+		cout << "Введите пятизначное число\n";
+		cin >> a;
+	}
+	division(a);
+	system("pause");
+}
+
+/* Задача №2: Напишите программу, которая позволяет пользователю ввести в
+консоли латинскую букву нижнего регистра,
+переводит её в верхний регистр и результат выводит в консоль.
+Код программы: */
+
+#include <iostream>
+
+using namespace std;
+
+char Registr(char ch)
+{
+	int num;
+	num = (int)ch - 32;
+	ch = (char)num;
+	cout << "Буква - ";
+	return ch;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	char symvol;
+	do
+	{
+	cout << "Введите латинскую букву нижнего регистра" << endl;
+	cin >> symvol;
+	if (symvol < 'a' || symvol > 'z') cout << "ошибка ввода, повторите попытку" << endl;
+	} while (symvol < 'a' || symvol > 'z');
+	cout << Registr(symvol) << endl;
+	system("pause");
+}
+
+/* Задача №3: Написать функцию, подсчитывающую среднее арифметическое целого массива.
+Предварительно объявив и, при необходимости, инициализировав переменные.
+Код программы: */
+
+#include <iostream>
+
+using namespace std;
+
+double avg(int* arr, int n)
+{
+	int sum = 0;
+	double sr;
+	for (int i = 0; i < n; i++)
+		sum += arr[i];
+	sr = (float)sum / n;
+	return sr;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	int* arr;
+	int n;
+	cout << "Введите количество элементов массива " << endl;;
+	cin >> n;
+	arr = new int[n];
+	cout << "Введите элементы массива " << endl;
+	for (int i = 0; i < n; i++) cin >> arr[i];
+	system("cls");
+	cout << "Массив " << endl;
+	for (int i = 0; i < n; i++) cout << arr[i] << " ";
+	cout << endl;
+	cout << "Среднее арифметическое данного массива = " << avg(arr, n) << endl;
+	system("pause");
+}
+
