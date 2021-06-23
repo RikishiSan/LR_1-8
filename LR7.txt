@@ -1,0 +1,64 @@
+/* Задача №1: Среднее гармоническое значение двух чисел получается путем инвертирования этих чисел,
+вычисления среднего значения инверсий и получения инверсии результата.
+Напишите функцию, которая принимает два аргумента double и
+возвращает среднее гармоническое значение этих двух чисел
+Код программы: */
+
+#include <iostream>
+
+using namespace std;
+
+double avg_harm(double x, double y)
+{
+	double avg;
+	x = 1 / x;
+	y = 1 / y;
+	avg = 2 / (x + y);
+	return avg;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	double doub_1, doub_2;
+	cout << "Введите 2 числа\n";
+	cin >> doub_1;
+	cin >> doub_2;
+	cout << "Среднее гармоническое значение " << doub_1 << " и " << doub_2 << " = " << avg_harm(doub_1, doub_2) << endl;
+	system("pause");
+}
+
+/* Задача №2:  Напишите и протестируйте функцию, которая принимает в качестве
+аргументов адреса трех переменных double и помещает наименьшее значение
+в первую переменную, среднее значение — во вторую, а наибольшее значение — в третью.
+Код программы: */
+
+#include <iostream>
+
+using namespace std;
+
+void sort(double& a, double& b, double& c)
+{
+	double x, y, z;
+	if (a <= b && b <= c) { x = a; y = b; z = c; }
+	else if (b <= a && a <= c) { x = b; y = a; z = c; }
+	else if (c <= b && b <= a) { x = c; y = b; z = a; }
+	else if (a <= c && c <= b) { x = a; y = c; z = b; }
+	else if (b <= c && c <= a) { x = b; y = c; z = a; }
+	else { x = c; y = a; z = b; }
+	a = x; b = y; c = z;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	double d1, d2, d3;
+	cout << "Введите 3 числа (double)" << endl;
+	cin >> d1 >> d2 >> d3;
+	system("cls");
+	cout << d1 << " " << d2 << " " << d3 << endl;
+	sort(d1, d2, d3);
+	cout << "Наименьшее = " << d1 << ", среднее = " << d2 << ", наибольшее = " << d3 << endl;
+	system("pause");
+}
+
